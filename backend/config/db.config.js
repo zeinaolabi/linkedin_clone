@@ -4,8 +4,6 @@ mongoose.connect(process.env.DATABASE_URL)
 .then(()=>{
     console.log("database connected")
 })
-.catch(err=>{
-    console.log("database error: ", err)
+.catch(error=>{
+    console.log("database error: ", error)
 })
-
-

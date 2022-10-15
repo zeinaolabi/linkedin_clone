@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
 import Footer from "../../components/footer";
+import {validateEmail, validatePassword} from './validators';
 const baseURL = "http://127.0.0.1:8000/auth/login";
 
 const LoginFrom = () => {
@@ -9,6 +10,19 @@ const LoginFrom = () => {
 
     const [input, setInput] = useState({email:"", password:""});
     const [error, setError ] = useState("");
+
+    const isValidEmail = validateEmail(input.email);
+    const isValidPassword = validatePassword(input.password);
+    
+    if(!isValidEmail.status){
+        setError(isValidEmail.message);
+        return;
+    } 
+
+    if(!isValidPassword.status){
+        setError(isValidPassword.message);
+        return;
+    }
 
     const submit = async (e) => {
         e.preventDefault();

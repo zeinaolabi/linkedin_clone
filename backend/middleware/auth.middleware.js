@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/users.model');
+const User = require('../Models/Users.model');
 
 const authMiddleware = async (request, response, next) => {
     const token = request.headers.authorization.split(" ")[1];
@@ -11,8 +11,8 @@ const authMiddleware = async (request, response, next) => {
         const user = await User.findOne({email: decoded.email}).lean()
         request.user = {...user, userType: 1};
         next()
-
-    }catch(error){
+    }
+    catch(error){
         return response.status(401).json({message: "Unauthorized"})
     }
 }

@@ -11,21 +11,21 @@ const LoginFrom = () => {
     const [input, setInput] = useState({email:"", password:""});
     const [error, setError ] = useState("");
 
-    const isValidEmail = validateEmail(input.email);
-    const isValidPassword = validatePassword(input.password);
-    
-    if(!isValidEmail.status){
-        setError(isValidEmail.message);
-        return;
-    } 
-
-    if(!isValidPassword.status){
-        setError(isValidPassword.message);
-        return;
-    }
-
     const submit = async (e) => {
         e.preventDefault();
+
+        const isValidEmail = validateEmail(input.email);
+        const isValidPassword = validatePassword(input.password);
+    
+        if(!isValidEmail.status){
+            setError(isValidEmail.message);
+            return;
+        } 
+
+        if(!isValidPassword.status){
+            setError(isValidPassword.message);
+            return;
+        }
         
         await axios.post(baseURL, input)
         .then( response => {
@@ -55,7 +55,7 @@ const LoginFrom = () => {
                 <div className="login_form_content">
                     <div className="login_content">
                         <h1>Sign in</h1>
-                        <p class="login_text">Stay updated on your professional world</p>
+                        <p className="login_text">Stay updated on your professional world</p>
 
                         <input type="text" placeholder="Email" className="textfield" onChange={(e) =>setInput({...input, email: e.target.value})}></input>
                         <input type="password" placeholder="Password" className="textfield" onChange={(e) =>setInput({...input, password: e.target.value})}></input>

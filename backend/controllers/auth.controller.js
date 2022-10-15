@@ -7,18 +7,18 @@ const login = async (request, response)=> {
 
     const user = await User.findOne({email}).select("+password");
 
-    if(!user) return response.status(404).json({ message: "Invalid Input"})
+    if(!user) return response.status(404).json({ message: "Invalid Email"});
+    
+    bcrypt.compare(password, user.password, (error, isValid) =>{
+        if (error) return response.json({message: error});
+        if (!isValid) return response.json({message: 'Invalid password'});
 
-    const isMatch = bcrypt.compare(password, user.password);
-    if(!isMatch) return response.status(404).json({message: "Invalid Input"})
+        const token = jwt.sign({email: user.email}, process.env.JWT_SECRET_KEY, {
+            expiresIn: '360h'
+        });
 
-    const token = jwt.sign({email: user.email}, process.env.JWT_SECRET_KEY, {
-        expiresIn: '360h'
+        response.status(200).json({user: user, token: token});
     });
-
-    user.token = token;
-
-    response.status(200).json({user: user, token: token});
 }
 
 const register = async (request, response)=>{

@@ -10,17 +10,49 @@ const RegisterationForm = () => {
     const [input, setInput] = useState({email:null, password:null, user_type_id:null});
     const [error, setError ] = useState("");
 
+    const validateEmail = (email) => {
+        //Check if the email is valid and has 3 characters after the @ and 5 after
+        if(email === ""){
+            setError("Missing field");
+            return false
+        }
+        else if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) || 
+        email.substring(0,email.indexOf("@")).length < 3 ||
+        email.substring(email.indexOf("@") + 1,email.length).length < 5){
+            setError("Invalid Email");
+            return false
+        }
+        return true
+    }
+    
+    const validatePassword = (password) => {
+        //Check if the input is not empty and is a string
+        if(password === ""){
+            setError("Missing field");
+            return false
+        }
+
+        if(password.length < 6){
+            setError("Minimum password is 6 characters");
+            return false
+        }
+    
+        return true
+    }
+
     const submit = async (e) => {
         e.preventDefault();
-        
-        await axios.post(baseURL, input)
-        .then( response => {
-            console.log(response);
-            localStorage.setItem("id", response.data.user._id);
-            localStorage.setItem("token", "Bearer " + response.data.token);
-            localStorage.setItem("type", response.data.user.user_type_id);
 
-            console.log(response.data)
+        if(!validateEmail(input.email)) return;
+        if(!validatePassword(input.password)) return;
+        
+        axios.post(baseURL, input)
+        .then( response => {
+            localStorage.setItem("id", response.data._id);
+            localStorage.setItem("token", "Bearer " + response.data.token);
+            localStorage.setItem("type", response.data.user_type_id);
+
+            setError("")
             window.location.reload()
         })
         .catch((error) =>{

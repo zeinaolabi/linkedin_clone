@@ -5,6 +5,7 @@ const baseURL = "http://127.0.0.1:8000/auth/register";
 
 const RegisterationForm = () => {
     const navigate = useNavigate();
+    
     const [input, setInput] = useState({email:"", password:""});
     const [error, setError ] = useState("");
 
@@ -25,9 +26,8 @@ const RegisterationForm = () => {
     }
 
     const navigateToLogin = () => {
-        // 👇️ navigate to /contacts
         navigate('/login');
-      };
+    };
 
     return(
         <div className="registeration_container" >

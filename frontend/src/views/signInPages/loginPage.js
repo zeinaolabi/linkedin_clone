@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import axios from "axios";
+import {useNavigate} from 'react-router-dom';
 const baseURL = "http://127.0.0.1:8000/auth/login";
 
 const LoginFrom = () => {
+    const navigate = useNavigate();
 
     const [input, setInput] = useState({email:"", password:""});
     const [error, setError ] = useState("");
@@ -23,6 +25,10 @@ const LoginFrom = () => {
         });
     }
 
+    const navigateToResgisteration = () => {
+        navigate('/register');
+      };
+
     return(
         <div className="login_container" >
             <div className="header">
@@ -42,7 +48,7 @@ const LoginFrom = () => {
 
                         {(error !== "") ? <span className="error_message">{error}</span> : ""}
                     </div>
-                    <p className="create_account">New to LinkedIn? <button className="transparent_btn"><span className="blueText">Sign in</span></button></p>
+                    <p className="create_account">New to LinkedIn? <button onClick={navigateToResgisteration} className="transparent_btn"><span className="blueText">Sign in</span></button></p>
                 </div>
             </div>
         </div>

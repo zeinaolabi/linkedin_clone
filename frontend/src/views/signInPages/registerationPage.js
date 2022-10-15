@@ -7,7 +7,7 @@ const baseURL = "http://127.0.0.1:8000/auth/register";
 const RegisterationForm = () => {
     const navigate = useNavigate();
 
-    const [input, setInput] = useState({email:"", password:"", user_type_id:null});
+    const [input, setInput] = useState({email:null, password:null, user_type_id:null});
     const [error, setError ] = useState("");
 
     const submit = async (e) => {
@@ -15,6 +15,7 @@ const RegisterationForm = () => {
         
         await axios.post(baseURL, input)
         .then( response => {
+            console.log(response);
             localStorage.setItem("id", response.data.user._id);
             localStorage.setItem("token", "Bearer " + response.data.token);
             localStorage.setItem("type", response.data.user.user_type_id);
@@ -23,17 +24,13 @@ const RegisterationForm = () => {
             window.location.reload()
         })
         .catch((error) =>{
-            setError(error.response.data.message)
+            setError("Invalid Input")
         });
     }
 
     const handleChange = e => {
-        const value = e.target;
-    
-        setInput({
-            user_type_id: value
-        });
-        console.log(e.target.value);
+        const value = e.target.value;
+        setInput({...input, user_type_id: value});
     };
 
     const navigateToLogin = () => {

@@ -15,10 +15,11 @@ const LoginFrom = () => {
             localStorage.setItem("id", response.data.user._id);
             localStorage.setItem("token", "Bearer " + response.data.access_token);
             localStorage.setItem("type", response.data.user.user_type_id);
-            window.location.reload()
+            console.log(response)
+            // window.location.reload()
         })
         .catch((error) =>{
-            setError("Invalid Input")
+            setError(error.response.data.message)
         });
     }
 

@@ -1,38 +1,275 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F3F2EE;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/*Start of Login design*/
+.login_container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 5%;
+}
+
+.login_form{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.login_form_content{
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.login_content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3vh 1vw;
+  width: 24%;
+  height: 50%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px #c4c3be;
+  background-color: white;
+}
+
+.login_text{
+  margin-top: 1vh;
+  margin-bottom: 2vh;
+}
+
+.login_content .textfield{
+  height: 5vh;
+}
+
+.login_content .blue_btn{
+  margin-top: 2vh;
+}
+
+/*End of registertaion design*/
+
+/*Start of registertaion design*/
+.registeration_container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 16.5%;
+}
+
+.header{
+  height: 5%;
+  width: 100%;
+  margin-top: 3vh;
+}
+
+.header img{
+  height: 40px;
+  width: 150px;
+}
+
+.registeration_form{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.register_header{
+  margin: 2vh 0;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.register_form_content{
+  display: flex;
+  width: 36%;
+  height: 50%;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.form_content{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0.5vh 1.3vw;
+}
+
+.inputfield:first-child{
+  margin-top: 6vh;
+  margin-bottom: 2vh;
+}
+
+.inputfield{
+  outline: none;
+  width: 100%;
+}
+
+.inputfield span{
+  color: rgb(103, 103, 103);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.textfield{
+  outline: none;
+  border: 1px solid rgb(83, 83, 83);
+  border-radius: 5px;
+  width: 100%;
+  height: 3.2vh;
+  padding: 0 1vw;
+  margin-top: 5px;
+}
+
+.terms p{
+  font-size: 13px;
+  text-align: center;
+  color: rgb(103, 103, 103);
+  margin: 2vh 0;
+}
+
+.blueText{
+  color: #0C66C2;
+  font-weight: bold;
+}
+
+.blueText:hover{
+  border-bottom: 2px solid #0C66C2;
+}
+
+.blue_btn{
+  background-color: #0C66C2;
   color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 1.6vh 2vw;
+  border-radius: 30px;
+  border: none;
+  outline: none;
 }
 
-.App-link {
-  color: #61dafb;
+.blue_btn:hover{
+  background-color: #0a4784;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.create_account{
+  margin-top: 2vh;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.transparent_btn{
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+}
+
+.radio_container{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  margin-top: 1.5vh;
+}
+
+.radio_buttons{
+  display: flex;
+  width: 70%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 1vw;
+}
+
+.radio_buttons span{
+  margin: 0 5px;
+}
+
+.error_message{
+  color: rgb(213, 2, 2);
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 2vh;
+  text-align: center;
+}
+
+.footer{
+  height: 5%;
+  width: 100%;
+}
+
+.footer_list{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.footer_list li{
+  margin: 0 10px;
+  color: #485766;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.footer_list li img{
+  width: 60px;
+  height: 15px;
+}
+
+.footer_list li:hover{
+  border-bottom: 1px solid #485766
+}
+/*End of registertaion design*/
+
+@media screen and (max-width: 1150px) {
+  .App{
+    background-color:white;
   }
-  to {
-    transform: rotate(360deg);
+
+  .register_form_content{
+    width: 100%;
+    height: 100%;
+  }
+
+  .login_content{
+    box-shadow: none;
+    width: 100%;
+  }
+
+  .login_form_content{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .footer{
+    display: none;
   }
 }

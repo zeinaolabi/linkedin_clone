@@ -13,10 +13,10 @@ const LoginFrom = () => {
         await axios.post(baseURL, input)
         .then( response => {
             localStorage.setItem("id", response.data.user._id);
-            localStorage.setItem("token", "Bearer " + response.data.access_token);
+            localStorage.setItem("token", "Bearer " + response.data.token);
             localStorage.setItem("type", response.data.user.user_type_id);
-            console.log(response)
-            // window.location.reload()
+
+            window.location.reload()
         })
         .catch((error) =>{
             setError(error.response.data.message)

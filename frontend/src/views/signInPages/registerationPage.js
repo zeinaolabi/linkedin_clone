@@ -30,14 +30,14 @@ const RegisterationForm = () => {
       };
 
     return(
-        <div className="login_container" >
+        <div className="registeration_container" >
             <div className="header">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/LinkedIn_Logo.svg/2560px-LinkedIn_Logo.svg.png" alt="logo"></img>
             </div>
             
-            <div className="login_form">
-                <p className="login_header">Make the most of your professional life</p>
-                <div className="login_form_content">
+            <div className="registeration_form">
+                <p className="register_header">Make the most of your professional life</p>
+                <div className="register_form_content">
                     <div className="form_content">
                         <label className="inputfield">
                             <span>Email</span>
@@ -52,7 +52,7 @@ const RegisterationForm = () => {
                             <p>By clicking Agree & Join, you agree to the LinkedIn <span className="blueText">User Agreement</span>, <span className="blueText">Privacy Policy</span>, and <span className="blueText">Cookie Policy</span>.</p>
                         </div>
 
-                        <button className="login_btn" onClick={submit}>Agree & Join</button> 
+                        <button className="blue_btn" onClick={submit}>Agree & Join</button> 
 
                         <p className="create_account">Already on LinkedIn? <button onClick={navigateToLogin} className="transparent_btn"><span className="blueText">Sign in</span></button></p>
                         {(error !== "") ? <span className="error_message">{error}</span> : ""}

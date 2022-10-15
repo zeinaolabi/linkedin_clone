@@ -45,7 +45,8 @@ const userSchema = new mongoose.Schema({
         trim: true
     },
     user_type_id: {
-        type: Number
+        type: Number,
+        required: "User type is required"
     }
 })
 

@@ -19,6 +19,7 @@ const LoginFrom = () => {
             localStorage.setItem("token", "Bearer " + response.data.token);
             localStorage.setItem("type", response.data.user.user_type_id);
 
+            setError("");
             window.location.reload()
         })
         .catch((error) =>{

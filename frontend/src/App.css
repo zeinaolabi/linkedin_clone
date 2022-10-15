@@ -191,6 +191,26 @@ body{
   font-size: 16px;
 }
 
+.radio_container{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  margin-top: 1.5vh;
+}
+
+.radio_buttons{
+  display: flex;
+  width: 70%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 1vw;
+}
+
+.radio_buttons span{
+  margin: 0 5px;
+}
+
 .error_message{
   color: rgb(213, 2, 2);
   font-size: 16px;

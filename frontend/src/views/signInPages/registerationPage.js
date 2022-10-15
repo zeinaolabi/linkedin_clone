@@ -7,7 +7,7 @@ const baseURL = "http://127.0.0.1:8000/auth/register";
 const RegisterationForm = () => {
     const navigate = useNavigate();
 
-    const [input, setInput] = useState({email:"", password:""});
+    const [input, setInput] = useState({email:"", password:"", user_type_id:null});
     const [error, setError ] = useState("");
 
     const submit = async (e) => {
@@ -19,12 +19,22 @@ const RegisterationForm = () => {
             localStorage.setItem("token", "Bearer " + response.data.token);
             localStorage.setItem("type", response.data.user.user_type_id);
 
+            console.log(response.data)
             window.location.reload()
         })
         .catch((error) =>{
             setError(error.response.data.message)
         });
     }
+
+    const handleChange = e => {
+        const value = e.target;
+    
+        setInput({
+            user_type_id: value
+        });
+        console.log(e.target.value);
+    };
 
     const navigateToLogin = () => {
         navigate('/login');
@@ -48,6 +58,20 @@ const RegisterationForm = () => {
                             <span>Password (6 or more characters)</span>
                             <input type="password" className="textfield" onChange={(e) =>setInput({...input, password: e.target.value})}></input>
                         </label>
+
+                        <div className="radio_container">
+                            <span>Sign in as: </span>
+                            <div className="radio_buttons">
+                                <label>
+                                    <input type="radio" value="1" name="user_type" onChange={handleChange}/> 
+                                    <span>Company</span>
+                                </label>
+                                <label>
+                                    <input type="radio" value="2" name="user_type" onChange={handleChange}/> 
+                                    <span>User</span>
+                                </label>
+                            </div>
+                        </div>
 
                         <div className="terms">
                             <p>By clicking Agree & Join, you agree to the LinkedIn <span className="blueText">User Agreement</span>, <span className="blueText">Privacy Policy</span>, and <span className="blueText">Cookie Policy</span>.</p>

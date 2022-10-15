@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
+import Footer from "../../components/footer";
 const baseURL = "http://127.0.0.1:8000/auth/login";
 
 const LoginFrom = () => {
@@ -48,9 +49,11 @@ const LoginFrom = () => {
 
                         {(error !== "") ? <span className="error_message">{error}</span> : ""}
                     </div>
-                    <p className="create_account">New to LinkedIn? <button onClick={navigateToResgisteration} className="transparent_btn"><span className="blueText">Sign in</span></button></p>
+                    <p className="create_account">New to LinkedIn? <button onClick={navigateToResgisteration} className="transparent_btn"><span className="blueText">Sign up</span></button></p>
                 </div>
             </div>
+
+            <Footer />
         </div>
     )
 }

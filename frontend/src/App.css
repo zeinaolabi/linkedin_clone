@@ -198,6 +198,35 @@ body{
   margin-top: 2vh;
   text-align: center;
 }
+
+.footer{
+  height: 5%;
+  width: 100%;
+}
+
+.footer_list{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.footer_list li{
+  margin: 0 10px;
+  color: #485766;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.footer_list li img{
+  width: 60px;
+  height: 15px;
+}
+
+.footer_list li:hover{
+  border-bottom: 1px solid #485766
+}
 /*End of registertaion design*/
 
 @media screen and (max-width: 1150px) {

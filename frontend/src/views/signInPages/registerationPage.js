@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
+import Footer from "../../components/footer";
 const baseURL = "http://127.0.0.1:8000/auth/register";
 
 const RegisterationForm = () => {
     const navigate = useNavigate();
-    
+
     const [input, setInput] = useState({email:"", password:""});
     const [error, setError ] = useState("");
 
@@ -59,6 +60,8 @@ const RegisterationForm = () => {
                     </div>
                 </div>
             </div>
+
+            <Footer />
         </div>
     )
 }

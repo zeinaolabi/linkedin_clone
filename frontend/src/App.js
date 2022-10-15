@@ -1,7 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import React from 'react';
-import LoginFrom from './views/loginPage/loginPage';
+import LoginFrom from './views/signInPages/loginPage';
+import RegisterationForm from './views/signInPages/registerationPage';
 
 // const userID = localStorage.getItem("id");
 // const userType = localStorage.getItem("type");
@@ -9,7 +10,7 @@ import LoginFrom from './views/loginPage/loginPage';
 function App() {
   // const isCompany = userID !== "" &&  userType === "1";
   // const isUser = userID !== "" &&  userType === "2";
-  let openPage = <LoginFrom /> ;
+  let openPage = <RegisterationForm /> ;
 
   // if(isCompany){
   //   openPage = <AdminPanel /> ;
@@ -26,6 +27,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={openPage} />
+          <Route path="/login" element={<LoginFrom />} />
         </Routes>
       </Router>
       

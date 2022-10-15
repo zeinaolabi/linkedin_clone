@@ -2,49 +2,30 @@ import React, {useState} from "react";
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
 import Footer from "../../components/footer";
+import {validateEmail, validatePassword} from './validators';
 const baseURL = "http://127.0.0.1:8000/auth/register";
 
 const RegisterationForm = () => {
     const navigate = useNavigate();
 
-    const [input, setInput] = useState({email:null, password:null, user_type_id:null});
+    const [input, setInput] = useState({email:"", password:"", user_type_id:null});
     const [error, setError ] = useState("");
-
-    const validateEmail = (email) => {
-        //Check if the email is valid and has 3 characters after the @ and 5 after
-        if(email === ""){
-            setError("Missing field");
-            return false
-        }
-        else if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) || 
-        email.substring(0,email.indexOf("@")).length < 3 ||
-        email.substring(email.indexOf("@") + 1,email.length).length < 5){
-            setError("Invalid Email");
-            return false
-        }
-        return true
-    }
-    
-    const validatePassword = (password) => {
-        //Check if the input is not empty and is a string
-        if(password === ""){
-            setError("Missing field");
-            return false
-        }
-
-        if(password.length < 6){
-            setError("Minimum password is 6 characters");
-            return false
-        }
-    
-        return true
-    }
 
     const submit = async (e) => {
         e.preventDefault();
 
-        if(!validateEmail(input.email)) return;
-        if(!validatePassword(input.password)) return;
+        const isValidEmail = validateEmail(input.email);
+        const isValidPassword = validatePassword(input.password);
+    
+        if(!isValidEmail.status){
+            setError(isValidEmail.message);
+            return;
+        } 
+
+        if(!isValidPassword.status){
+            setError(isValidPassword.message);
+            return;
+        } 
         
         axios.post(baseURL, input)
         .then( response => {

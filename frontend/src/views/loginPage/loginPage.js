@@ -25,18 +25,31 @@ const LoginFrom = () => {
     return(
         <div className="login_container" >
             <div className="header">
-                <img src="./../../../public/linkedin_logo.png" alt="logo"></img>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/LinkedIn_Logo.svg/2560px-LinkedIn_Logo.svg.png" alt="logo"></img>
             </div>
             
             <div className="login_form">
-                <div className="form_content">
-                    <h1 class="login_title">Login</h1>
+                <p className="login_header">Make the most of your professional life</p>
+                <div className="login_form_content">
+                    <div className="form_content">
+                        <label className="inputfield">
+                            <span>Email</span>
+                            <input type="text" className="textfield" onChange={(e) =>setInput({...input, email: e.target.value})}></input>
+                        </label>
+                        <label className="inputfield">
+                            <span>Password (6 or more characters)</span>
+                            <input type="password" className="textfield" onChange={(e) =>setInput({...input, password: e.target.value})}></input>
+                        </label>
 
-                    <input type="text" className="textfield" placeholder="Email" onChange={(e) =>setInput({...input, email: e.target.value})}></input>
-                    <input type="password" className="textfield" placeholder="Password" onChange={(e) =>setInput({...input, password: e.target.value})}></input>
+                        <div className="terms">
+                            <p>By clicking Agree & Join, you agree to the LinkedIn <span className="blueText">User Agreement</span>, <span className="blueText">Privacy Policy</span>, and <span className="blueText">Cookie Policy</span>.</p>
+                        </div>
 
-                    <button className="login_btn" onClick={submit}>Login in</button> 
-                    {(error !== "") ? <span className="error_message">{error}</span> : ""}
+                        <button className="login_btn" onClick={submit}>Agree & Join</button> 
+
+                        <p className="create_account">Already on LinkedIn? <button className="transparent_btn"><span className="blueText">Sign in</span></button></p>
+                        {(error !== "") ? <span className="error_message">{error}</span> : ""}
+                    </div>
                 </div>
             </div>
         </div>

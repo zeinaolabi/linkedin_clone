@@ -8,10 +8,10 @@ const login = async (request, response)=> {
     const user = await User.findOne({email}).select("+password");
 
     if(!user) return response.status(404).json({ message: "Invalid Email"});
-    
+
     bcrypt.compare(password, user.password, (error, isValid) =>{
-        if (error) return response.json({message: error});
-        if (!isValid) return response.json({message: 'Invalid password'});
+        if (error) return response.status(404).json({message: error});
+        if (!isValid) return response.status(404).json({message: 'Invalid Password'});
 
         const token = jwt.sign({email: user.email}, process.env.JWT_SECRET_KEY, {
             expiresIn: '360h'

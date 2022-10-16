@@ -4,17 +4,17 @@ import React from 'react';
 import LoginFrom from './views/signInPages/loginPage';
 import RegisterationForm from './views/signInPages/registerationPage';
 
-// const userID = localStorage.getItem("id");
-// const userType = localStorage.getItem("type");
+const userID = localStorage.getItem("id");
+const userType = localStorage.getItem("type");
 
 function App() {
   // const isCompany = userID !== "" &&  userType === "1";
-  // const isUser = userID !== "" &&  userType === "2";
+  const isUser = userID !== "" &&  userType === "2";
   let openPage = <RegisterationForm /> ;
 
-  // if(isCompany){
-  //   openPage = <AdminPanel /> ;
-  // } 
+  if(isUer){
+    openPage = <UserLandingPage /> ;
+  } 
   // else if(isUser){
   //   openPage = <InstructorPage />;
   // }

@@ -4,6 +4,7 @@ import React from 'react';
 import LoginFrom from './views/signInPages/loginPage';
 import RegisterationForm from './views/signInPages/registerationPage';
 import UserLandingPage from './views/userPages/userLandingPage';
+import NotificationsPage from './views/userPages/notificationsPage';
 
 const userID = localStorage.getItem("id");
 const userType = localStorage.getItem("type");
@@ -30,6 +31,9 @@ function App() {
           <Route path="/" element={openPage} />
           <Route path="/register" element={<RegisterationForm />} />
           <Route path="/login" element={<LoginFrom />} />
+          <Route path="/notifications" element={<NotificationsPage />} />
+          <Route path="/jobs" element={<UserLandingPage />} />
+
         </Routes>
       </Router>
       

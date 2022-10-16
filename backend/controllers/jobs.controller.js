@@ -29,13 +29,23 @@ const addJob = async (request, response)=> {
 const searchForJob = async (request, response)=> {
     const {title} = request.params;
 
-    const job = await Job.find({title:{'$regex' : title , '$options' : 'i'}})
+    const jobs = await Job.find({title:{'$regex' : title , '$options' : 'i'}})
 
-    if(job.length === 0) return response.status(200).json({message: "No jobs found"})
+    if(jobs.length === 0) return response.status(200).json({message: "No jobs found"})
 
-    return response.status(200).json(job);
+    return response.status(200).json(jobs);
 }
+
+const getAllJobs = async (request, response)=> {
+    const jobs = await Job.find().sort({"createdAt": "desc"});
+
+    if(jobs.length === 0) return response.status(200).json({message: "No jobs found"})
+
+    return response.status(200).json(jobs);
+}
+
 module.exports = {
     searchForJob,
-    addJob
+    addJob,
+    getAllJobs
 }

@@ -1,0 +1,28 @@
+.details_container{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid lightgray;
+    padding: 1vh 0;
+}
+
+.details_content{
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.details_container img{
+    width: 60px;
+    height: 60px;
+}
+
+.gray_text{
+    color:gray;
+}
+
+.date{
+    font-size: 10px;
+}

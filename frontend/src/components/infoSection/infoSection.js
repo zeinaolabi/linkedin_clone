@@ -1,5 +1,6 @@
 import React from "react";
 import './infoSection.css';
+import InfoDetails from '../infoDetails/infoDetails';
 
 const InfoSection = ({title, description, dataType}) =>{
     return (

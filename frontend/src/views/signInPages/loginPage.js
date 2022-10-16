@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
-import Footer from "../../components/footer";
+import Footer from "../../components/footer/footer";
 import {validateEmail, validatePassword} from './validators';
 const baseURL = "http://127.0.0.1:8000/auth/login";
 

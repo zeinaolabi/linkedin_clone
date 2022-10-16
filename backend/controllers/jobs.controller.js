@@ -31,7 +31,7 @@ const searchForJob = async (request, response)=> {
 
     const job = await Job.find({title:{'$regex' : title , '$options' : 'i'}})
 
-    if(!job) return response.status(200).json({message: "No jobs found"})
+    if(job.length === 0) return response.status(200).json({message: "No jobs found"})
 
     return response.status(200).json(job);
 }

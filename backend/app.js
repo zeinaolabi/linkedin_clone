@@ -11,8 +11,8 @@ app.use(cors({
 const authRoutes = require('./routes/auth.routes');
 app.use('/auth', authRoutes)
 
-// const usersRoutes = require('./routes/users.routes');
-// app.use('/users', usersRoutes)
+const jobsRoutes = require('./routes/jobs.routes');
+app.use('/jobs', jobsRoutes)
 
 app.listen(process.env.PORT, (error)=>{
     if(error) throw error;

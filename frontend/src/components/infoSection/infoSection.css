@@ -22,3 +22,9 @@
 .info_header h3{
     padding-bottom: 0.5vh;
 }
+
+@media screen and (max-width: 1200px) {
+    .info_content{
+        width: 80%;
+    }
+}

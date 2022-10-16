@@ -64,12 +64,19 @@ const applyToJob = async (request, response) => {
 }
 
 const getJobNotification = async (request, response) => {
-    const {userID} = request.body
-    const followings = await User.findById(userID).select('follows')
+    const {userID} = request.params
+    const followings = await User.findById(userID).select("follows._id");
 
-    // if(jobs.length === 0) return response.status(404).json({message: "No jobs found"})
+    if(!followings) return response.status(404).json({message: "No Followed Companies"})
 
-    return response.status(200).json(followings);
+    const notifications = [];
+
+    followings.follows.map( follow => {
+        const companyNotifications = Notification.find({"company._id": follow._id})
+        notifications.push(companyNotifications)
+    })
+
+    return response.status(200).json(notifications);
 }
 
 module.exports = {

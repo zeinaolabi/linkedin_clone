@@ -6,6 +6,6 @@ router.post('/add_job', addJob);
 router.post('/apply', applyToJob);
 router.get('/search_for_job/:title', searchForJob);
 router.get('/get_all_jobs', getAllJobs);
-router.get('/get_notifications', getJobNotification);
+router.get('/get_notifications/:userID', getJobNotification);
 
 module.exports = router;

@@ -24,6 +24,10 @@ const login = async (request, response)=> {
 const register = async (request, response)=>{
     const {email, password, user_type_id} = request.body;
 
+    const user = await User.findOne({email});
+
+    if(user) return response.status(404).json({message: "Used Email"});
+
     try{
         const user = new User();
         user.email = email;

@@ -1,7 +1,24 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 import './infoDetails.css';
+const applyAPI = "http://127.0.0.1:8000/jobs/apply";
+const userID = localStorage.getItem("id");
 
-const InfoDetails = ({title, companyName, country, date, profile_picture, dataType}) =>{
+const InfoDetails = ({id, title, companyName, country, date, profile_picture, dataType}) =>{
+    const [input, setInput] = useState({userID: userID, jobID: id});
+
+    useEffect(()=>{
+        setInput({...input, jobID: id})
+    },[id])
+
+    const apply = async (e) => {
+        e.preventDefault();
+    
+        await axios.post(applyAPI, input)
+        .then( response => {
+            console.log(response);
+        })
+    }
 
     return (
         <div className="details_container">
@@ -15,7 +32,7 @@ const InfoDetails = ({title, companyName, country, date, profile_picture, dataTy
                     <span className="gray_text date">{date}</span>
                 </div>
 
-                { dataType === "Jobs" ? <button className="blue_btn">Apply</button> : ""}
+                { dataType === "Jobs" ? <button onClick={apply} className="blue_btn">Apply</button> : ""}
             </div>
         </div>
     )

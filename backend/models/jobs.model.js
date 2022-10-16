@@ -21,8 +21,14 @@ const jobSchema = new mongoose.Schema({
     },
     company: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Company'
-    }
+        ref: 'User'
+    },
+    applied_to: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }]
+}, {
+    timestamps: true
 })
 
 const Job = mongoose.model('Job', jobSchema);

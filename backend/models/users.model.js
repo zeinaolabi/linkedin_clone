@@ -37,14 +37,27 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    company_name: {
+    name: {
         type: String,
-        trim: true
+        required: 'name is required'
     },
-    company_about: {
+    bio: {
         type: String,
-        trim: true
+        maxLength: 150
     },
+    about: {
+        type: String
+    },
+    profile_picture: {
+        type: String
+    },
+    cover_picture: {
+        type: String
+    },
+    follows: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     user_type_id: {
         type: Number,
         required: "User type is required"

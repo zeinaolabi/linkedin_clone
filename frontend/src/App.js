@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import React from 'react';
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 import LoginFrom from './views/signInPages/loginPage';
 import RegisterationForm from './views/signInPages/registerationPage';
 import UserLandingPage from './views/userPages/userLandingPage';
@@ -8,6 +9,7 @@ import NotificationsPage from './views/userPages/notificationsPage';
 
 const userID = localStorage.getItem("id");
 const userType = localStorage.getItem("type");
+const queryClient = new QueryClient();
 
 function App() {
   // const isCompany = userID !== "" &&  userType === "1";
@@ -25,7 +27,8 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
       <Router>
         <Routes>
           <Route path="/" element={openPage} />
@@ -36,8 +39,8 @@ function App() {
 
         </Routes>
       </Router>
-      
     </div>
+    </QueryClientProvider>
   );
 }
 

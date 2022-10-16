@@ -1,8 +1,17 @@
 import React from "react";
 import './infoSection.css';
 import InfoDetails from '../infoDetails/infoDetails';
+import { useQuery } from 'react-query';
+import axios from "axios";
+
+const getJobs = async () => {
+    const resposne = await axios("http://127.0.0.1:8000/jobs/get_all_jobs");
+    return resposne.data;
+}
 
 const InfoSection = ({title, description, dataType}) =>{
+    const {data, status} = useQuery('jobs', getJobs);
+
     return (
         <div className="info_container">
             <div className="info_content">
@@ -11,15 +20,14 @@ const InfoSection = ({title, description, dataType}) =>{
                     <p>{description}</p>
                 </div>
 
-                <InfoDetails />
-
-                {/* {
-                    assignment.map((data)=>{
+                {
+                    data.map((response)=>{
+                        console.log(response)
                         return(
-                            <InfoDetails title={data.name} description={data.description} due_date={data.due_date}/>
+                            <InfoDetails title={response.title} companyName = {response.company} country={response.country} date={response.createdAt}/>
                         )
                     })
-                } */}
+                }
 
             </div>
         </div>

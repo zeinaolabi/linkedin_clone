@@ -7,11 +7,28 @@
     padding: 1vh 0;
 }
 
+.details_container:last-child{
+    border-bottom: 1px solid transparent;
+}
+
 .details_content{
+    margin: 0 1vw;
     width: 100%;
     min-height: 100px;
     display: flex;
     flex-direction: column;
+}
+
+.details_content h4{
+    width: fit-content;
+    color:#0C66C2;
+    border-bottom: 2px solid transparent;
+    margin-bottom: 5px;
+}
+
+.details_content h4:hover{
+    color:#0C66C2;
+    border-bottom: 2px solid #0C66C2;
 }
 
 .details_container img{

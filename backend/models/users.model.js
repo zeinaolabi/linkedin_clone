@@ -54,8 +54,10 @@ const userSchema = new mongoose.Schema({
         type: String
     },
     follows: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        company: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
     }],
     user_type_id: {
         type: Number,

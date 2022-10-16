@@ -12,7 +12,7 @@ const followCompany = async (request, response) => {
     const checkCompany = await User.findById(companyID);
     if(!checkCompany || checkCompany.user_type_id !== company_type) return response.status(404).json({message: "Invalid Company"});
 
-    const hasFollowed = await User.findOne({_id: userID, "follows._id": userID});
+    const hasFollowed = await User.findOne({_id: userID, "follows._id": companyID});
     if(hasFollowed) return response.status(404).json({message: "Already Followed"});
 
     user.follows.push(companyID);

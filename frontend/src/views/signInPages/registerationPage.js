@@ -34,7 +34,7 @@ const RegisterationForm = () => {
             localStorage.setItem("type", response.data.user_type_id);
 
             setError("")
-            window.location.reload()
+            naviagteToLanding();
         })
         .catch((error) =>{
             setError(error.response.data.message)
@@ -49,6 +49,11 @@ const RegisterationForm = () => {
 
     const navigateToLogin = () => {
         navigate('/login');
+    };
+
+    const naviagteToLanding = () => {
+        navigate('/');
+        window.location.reload();
     };
 
     return(

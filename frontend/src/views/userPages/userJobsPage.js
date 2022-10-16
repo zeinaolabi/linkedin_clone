@@ -7,7 +7,7 @@ const UserJobsPage = () => {
     return(
         <div className="main_container" >
             <Header />
-            <InfoSection title="More jobs for you" description="Based on your profile and search history" url={url} errorMessage="No Jobs Found"/>
+            <InfoSection title="More jobs for you" description="Based on your profile and search history" url={url} errorMessage="No Jobs Found" dataType="Jobs"/>
    
         </div>
     )

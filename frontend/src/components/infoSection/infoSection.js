@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import './infoSection.css';
 import InfoDetails from '../infoDetails/infoDetails';
 import { useQuery } from 'react-query';
 import axios from "axios";
 
-const InfoSection = ({title, description, url, errorMessage}) =>{
+const InfoSection = ({title, description, url, errorMessage, dataType}) =>{
     const getData = async () => {
         const resposne = await axios(url);
         return resposne.data;
@@ -26,7 +26,7 @@ const InfoSection = ({title, description, url, errorMessage}) =>{
                     status === "success" ?
                     data.map((response)=>{
                         return(
-                            <InfoDetails title={response.title} companyName = {response.company} country={response.country} date={response.createdAt}/>
+                            <InfoDetails title={response.title} companyName = {response.company} country={response.country} date={response.createdAt} dataType={dataType}/>
                         )
                     }) : ""
                 }

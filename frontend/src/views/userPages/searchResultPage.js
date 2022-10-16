@@ -11,7 +11,7 @@ const UserJobsPage = () => {
     return(
         <div className="main_container" >
             <Header />
-            <InfoSection title="Search Result" url={url + searchValue} errorMessage="No Jobs Found"/>
+            <InfoSection title="Search Result" url={url + searchValue} errorMessage="No Jobs Found" dataType="Jobs"/>
    
         </div>
     )

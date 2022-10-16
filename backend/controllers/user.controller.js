@@ -21,6 +21,25 @@ const followCompany = async (request, response) => {
     response.json(user);
 }
 
+const unfollowCompany = async (request, response) => {
+    const {userID, companyID} = request.body;
+
+    const user = await User.findById(userID);
+    if(!user || user.user_type_id !== user_type) return response.status(404).json({message: "Invalid User"});
+
+    const checkCompany = await User.findById(companyID);
+    if(!checkCompany || checkCompany.user_type_id !== company_type) return response.status(404).json({message: "Invalid Company"});
+
+    const hasFollowed = await User.findOne({_id: userID, "follows._id": companyID});
+    if(!hasFollowed) return response.status(404).json({message: "Not Followed"});
+
+    user.follows.pop(companyID);
+    user.save();
+
+    response.json(user);
+}
+
 module.exports = {
-    followCompany
+    followCompany,
+    unfollowCompany
 }

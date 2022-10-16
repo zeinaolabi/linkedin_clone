@@ -1,14 +1,14 @@
 const Job = require('../models/jobs.model');
 const User = require("../models/users.model");
-const {request, response} = require("express");
 const company_type = 1;
+const user_type = 2;
 
 const addJob = async (request, response) => {
     const {title, description, level, country, company} = request.body;
 
     const checkUserType = await User.findById(company);
 
-    if(checkUserType.user_type_id !== company_type) return response.status(404).json({message: "Invalid ID"});
+    if(!checkUserType || checkUserType.user_type_id !== company_type) return response.status(404).json({message: "Invalid ID"});
 
     try{
         const job = new Job();
@@ -49,13 +49,18 @@ const applyToJob = async (request, response) => {
     const {userID, jobID} = request.body;
 
     const checkUser = await User.findById(userID);
-    if(!checkUser) return response.status(404).json({message: "Invalid User"});
+    if(!checkUser || checkUser.user_type_id !== user_type) return response.status(404).json({message: "Invalid User"});
 
-    const checkJob = await User.findById(jobID);
+    const checkJob = await Job.findById(jobID);
     if(!checkJob) return response.status(404).json({message: "Invalid Job"});
 
+    const hasApplied = await Job.findOne({_id: jobID, "applied_to._id": userID});
+    if(hasApplied) return response.status(404).json({message: "Already Applied"});
 
+    checkJob.applied_to.push(userID);
+    checkJob.save();
 
+    response.json(checkJob);
 }
 
 module.exports = {

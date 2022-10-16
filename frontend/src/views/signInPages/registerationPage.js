@@ -53,7 +53,7 @@ const RegisterationForm = () => {
 
     return(
         <div className="registeration_container" >
-            <div className="header">
+            <div className="reg_header">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/LinkedIn_Logo.svg/2560px-LinkedIn_Logo.svg.png" alt="logo"></img>
             </div>
             

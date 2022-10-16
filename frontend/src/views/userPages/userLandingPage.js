@@ -1,16 +1,15 @@
 import React, {useState} from "react";
-import axios from "axios";
 import {useNavigate} from 'react-router-dom';
+import Header from "../../components/header/header";
 
 const LoginFrom = () => {
     const navigate = useNavigate();
 
-    const navigateToResgisteration = () => {
-        navigate('/register');
-      };
+
 
     return(
         <div className="main_container" >
+            <Header />
    
         </div>
     )

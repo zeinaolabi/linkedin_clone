@@ -34,7 +34,7 @@ const LoginFrom = () => {
             localStorage.setItem("type", response.data.user.user_type_id);
 
             setError("");
-            window.location.reload()
+            naviagteToLanding();
         })
         .catch((error) =>{
             setError(error.response.data.message)
@@ -43,7 +43,11 @@ const LoginFrom = () => {
 
     const navigateToResgisteration = () => {
         navigate('/register');
-      };
+    };
+
+    const naviagteToLanding = () => {
+        navigate('/');
+    };
 
     return(
         <div className="login_container" >

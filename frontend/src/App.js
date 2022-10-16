@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import React from 'react';
 import LoginFrom from './views/signInPages/loginPage';
 import RegisterationForm from './views/signInPages/registerationPage';
+import UserLandingPage from './views/userPages/userLandingPage';
 
 const userID = localStorage.getItem("id");
 const userType = localStorage.getItem("type");
@@ -12,7 +13,7 @@ function App() {
   const isUser = userID !== "" &&  userType === "2";
   let openPage = <RegisterationForm /> ;
 
-  if(isUer){
+  if(isUser){
     openPage = <UserLandingPage /> ;
   } 
   // else if(isUser){

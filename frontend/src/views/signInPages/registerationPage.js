@@ -27,7 +27,7 @@ const RegisterationForm = () => {
             return;
         } 
         
-        axios.post(baseURL, input)
+        await axios.post(baseURL, input)
         .then( response => {
             localStorage.setItem("id", response.data._id);
             localStorage.setItem("token", "Bearer " + response.data.token);
@@ -41,6 +41,7 @@ const RegisterationForm = () => {
         });
     }
 
+    //Get value of the radio button on change
     const handleChange = e => {
         const value = e.target.value;
         setInput({...input, user_type_id: value});

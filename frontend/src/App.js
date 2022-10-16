@@ -11,7 +11,7 @@ const userType = localStorage.getItem("type");
 function App() {
   // const isCompany = userID !== "" &&  userType === "1";
   const isUser = userID !== "" &&  userType === "2";
-  let openPage = <RegisterationForm /> ;
+  let openPage;
 
   if(isUser){
     openPage = <UserLandingPage /> ;
@@ -19,9 +19,9 @@ function App() {
   // else if(isUser){
   //   openPage = <InstructorPage />;
   // }
-  // else{
-  //   openPage = <LoginFrom /> 
-  // }
+  else{
+    openPage = <LoginFrom /> 
+  }
 
   return (
     <div className="App">

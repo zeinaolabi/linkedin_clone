@@ -1,18 +1,15 @@
-import React, {useState} from "react";
-import {useNavigate} from 'react-router-dom';
+import React from "react";
 import Header from "../../components/header/header";
+import InfoSection from "../../components/infoSection/infoSection";
 
-const LoginFrom = () => {
-    const navigate = useNavigate();
-
-
-
+const UserLandingPage = () => {
     return(
         <div className="main_container" >
             <Header />
+            <InfoSection title="More jobs for you" description="Based on your profile and search history" />
    
         </div>
     )
 }
 
-export default LoginFrom;
+export default UserLandingPage;

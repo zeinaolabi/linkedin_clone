@@ -39,7 +39,6 @@ const userSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        required: 'name is required'
     },
     bio: {
         type: String,

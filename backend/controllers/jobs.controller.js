@@ -40,7 +40,7 @@ const searchForJob = async (request, response) => {
 const getAllJobs = async (request, response) => {
     const jobs = await Job.find().sort({"createdAt": "desc"});
 
-    if(jobs.length === 0) return response.status(200).json({message: "No jobs found"})
+    if(jobs.length === 0) return response.status(404).json({message: "No jobs found"})
 
     return response.status(200).json(jobs);
 }
@@ -63,9 +63,19 @@ const applyToJob = async (request, response) => {
     response.json(checkJob);
 }
 
+const getJobNotification = async (request, response) => {
+    const {userID} = request.body
+    const followings = await User.findById(userID).select('follows')
+
+    // if(jobs.length === 0) return response.status(404).json({message: "No jobs found"})
+
+    return response.status(200).json(followings);
+}
+
 module.exports = {
     searchForJob,
     addJob,
     getAllJobs,
-    applyToJob
+    applyToJob,
+    getJobNotification
 }

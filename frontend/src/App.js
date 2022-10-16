@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import React from 'react';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { QueryClient, QueryClientProvider} from 'react-query';
 import LoginFrom from './views/signInPages/loginPage';
 import RegisterationForm from './views/signInPages/registerationPage';
 import UserLandingPage from './views/userPages/userLandingPage';

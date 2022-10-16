@@ -23,6 +23,14 @@
     padding-bottom: 0.5vh;
 }
 
+.loading{
+    width: 100%;
+    text-align: center;
+    color: #0C66C2;
+    font-weight: bold;
+    margin: 5vh 0;
+}
+
 @media screen and (max-width: 1200px) {
     .info_content{
         width: 80%;

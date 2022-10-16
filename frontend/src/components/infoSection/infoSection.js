@@ -4,12 +4,12 @@ import InfoDetails from '../infoDetails/infoDetails';
 import { useQuery } from 'react-query';
 import axios from "axios";
 
-const getJobs = async () => {
-    const resposne = await axios("http://127.0.0.1:8000/jobs/get_all_jobs");
-    return resposne.data;
-}
+const InfoSection = ({title, description, url}) =>{
+    const getJobs = async () => {
+        const resposne = await axios(url);
+        return resposne.data;
+    }
 
-const InfoSection = ({title, description, dataType}) =>{
     const {data, status} = useQuery('jobs', getJobs);
 
     return (
@@ -20,13 +20,17 @@ const InfoSection = ({title, description, dataType}) =>{
                     <p>{description}</p>
                 </div>
 
+                { status === "error" ? <div className="loading">Error Displaying Data</div> : ""}
+
+                { status === "loading" ? <div className="loading">Loading..</div> : ""}
+
                 {
+                    status === "success" ?
                     data.map((response)=>{
-                        console.log(response)
                         return(
                             <InfoDetails title={response.title} companyName = {response.company} country={response.country} date={response.createdAt}/>
                         )
-                    })
+                    }) : ""
                 }
 
             </div>

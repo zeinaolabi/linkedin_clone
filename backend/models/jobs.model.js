@@ -9,18 +9,20 @@ const jobSchema = new mongoose.Schema({
     description: {
         type: String,
         required: 'Description is required',
-        unique: true,
         trim: true
     },
     level: {
-        type: String
+        type: String,
+        required: 'Level is required'
     },
     country: {
         type: String,
+        required: 'Country is required',
         trim: true
     },
     company: {
         type: mongoose.Schema.Types.ObjectId,
+        required: 'Company is required',
         ref: 'User'
     },
     applied_to: [{

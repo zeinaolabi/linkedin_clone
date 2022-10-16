@@ -27,11 +27,13 @@ const addJob = async (request, response)=> {
 }
 
 const searchForJob = async (request, response)=> {
-    const title = request.body;
+    const {title} = request.params;
 
-    return response.json(title);
+    const job = await Job.find({title:{'$regex' : title , '$options' : 'i'}})
 
-    const user = await Job.findOne({email}).select("+password");
+    if(!job) return response.status(200).json({message: "No jobs found"})
+
+    return response.status(200).json(job);
 }
 module.exports = {
     searchForJob,

@@ -3,6 +3,6 @@ const {addJob, searchForJob} = require('../controllers/jobs.controller')
 const router = Router();
 
 router.post('/add_job', addJob);
-router.get('/search_for_job', searchForJob);
+router.get('/search_for_job/:title', searchForJob);
 
 module.exports = router;

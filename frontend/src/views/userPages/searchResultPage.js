@@ -8,7 +8,6 @@ const UserJobsPage = () => {
     const { state } = useLocation();
     const searchValue = state.search;
 
-    console.log(url + searchValue)
     return(
         <div className="main_container" >
             <Header />

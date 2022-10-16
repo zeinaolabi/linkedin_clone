@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './infoSection.css';
 import InfoDetails from '../infoDetails/infoDetails';
 import { useQuery } from 'react-query';
@@ -21,9 +21,7 @@ const InfoSection = ({title, description, url, errorMessage}) =>{
                 </div>
 
                 { status === "error" ? <div className="loading">{errorMessage}</div> : ""}
-
                 { status === "loading" ? <div className="loading">Loading..</div> : ""}
-
                 {
                     status === "success" ?
                     data.map((response)=>{

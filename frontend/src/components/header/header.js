@@ -7,14 +7,17 @@ const Header = () =>{
 
     const navigateToJobs = ()=> {
         navigate('/jobs');
+        window.location.reload();
     };
 
     const navigateToNotifications = ()=> {
         navigate('/notifications');
+        window.location.reload();
     };
 
     const navigateToProfile = ()=> {
         navigate('/profile');
+        window.location.reload();
     };
 
     const logout = (e)=> {
@@ -27,6 +30,7 @@ const Header = () =>{
     const handleKeyDown = (event) => {
         if(event.key === 'Enter') {
             navigate('/search_result',{state: {search: event.target.value}})
+            window.location.reload();
         }
     }
 

@@ -37,7 +37,7 @@ const RegisterationForm = () => {
             window.location.reload()
         })
         .catch((error) =>{
-            setError("Invalid Input")
+            setError(error.response.data.message)
         });
     }
 

@@ -4,8 +4,9 @@ import React from 'react';
 import { QueryClient, QueryClientProvider} from 'react-query';
 import LoginFrom from './views/signInPages/loginPage';
 import RegisterationForm from './views/signInPages/registerationPage';
-import UserLandingPage from './views/userPages/userLandingPage';
+import UserJobsPage from './views/userPages/userJobsPage';
 import NotificationsPage from './views/userPages/notificationsPage';
+import SearchResultPage from './views/userPages/searchResultPage';
 
 const userID = localStorage.getItem("id");
 const userType = localStorage.getItem("type");
@@ -17,7 +18,7 @@ function App() {
   let openPage;
 
   if(isUser){
-    openPage = <UserLandingPage /> ;
+    openPage = <UserJobsPage />;
   } 
   // else if(isUser){
   //   openPage = <InstructorPage />;
@@ -35,7 +36,8 @@ function App() {
           <Route path="/register" element={<RegisterationForm />} />
           <Route path="/login" element={<LoginFrom />} />
           <Route path="/notifications" element={<NotificationsPage />} />
-          <Route path="/jobs" element={<UserLandingPage />} />
+          <Route path="/jobs" element={<UserJobsPage />} />
+          <Route path="/search_result" element={<SearchResultPage />} />
 
         </Routes>
       </Router>

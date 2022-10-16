@@ -24,11 +24,17 @@ const Header = () =>{
         window.location.href = '/';
     }
 
+    const handleKeyDown = (event) => {
+        if(event.key === 'Enter') {
+            navigate('/search_result',{state: {search: event.target.value}})
+        }
+    }
+
     return (
         <div className="header">
             <div className="search_section">
                 <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="logo"></img>
-                <input placeholder="Search by job title"></input>
+                <input placeholder="Search by job title" onKeyDown={handleKeyDown}></input>
             </div>
 
             <ul className="header_list">

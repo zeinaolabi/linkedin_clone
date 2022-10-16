@@ -4,13 +4,13 @@ import InfoDetails from '../infoDetails/infoDetails';
 import { useQuery } from 'react-query';
 import axios from "axios";
 
-const InfoSection = ({title, description, url}) =>{
-    const getJobs = async () => {
+const InfoSection = ({title, description, url, errorMessage}) =>{
+    const getData = async () => {
         const resposne = await axios(url);
         return resposne.data;
     }
 
-    const {data, status} = useQuery('jobs', getJobs);
+    const {data, status} = useQuery('jobs', getData);
 
     return (
         <div className="info_container">
@@ -20,7 +20,7 @@ const InfoSection = ({title, description, url}) =>{
                     <p>{description}</p>
                 </div>
 
-                { status === "error" ? <div className="loading">Error Displaying Data</div> : ""}
+                { status === "error" ? <div className="loading">{errorMessage}</div> : ""}
 
                 { status === "loading" ? <div className="loading">Loading..</div> : ""}
 

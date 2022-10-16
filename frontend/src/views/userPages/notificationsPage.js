@@ -7,7 +7,7 @@ const NotificationsPage = () => {
     return(
         <div className="main_container" >
             <Header />
-            <InfoSection url={url}/>
+            <InfoSection url={url} errorMessage="No Notifications Found"/>
    
         </div>
     )

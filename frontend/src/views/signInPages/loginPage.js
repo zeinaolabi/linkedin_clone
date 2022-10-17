@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
-import Footer from "../../components/footer";
+import Footer from "../../components/footer/footer";
 import {validateEmail, validatePassword} from './validators';
 const baseURL = "http://127.0.0.1:8000/auth/login";
 
@@ -34,7 +34,7 @@ const LoginFrom = () => {
             localStorage.setItem("type", response.data.user.user_type_id);
 
             setError("");
-            window.location.reload()
+            naviagteToLanding();
         })
         .catch((error) =>{
             setError(error.response.data.message)
@@ -43,11 +43,16 @@ const LoginFrom = () => {
 
     const navigateToResgisteration = () => {
         navigate('/register');
-      };
+    };
+
+    const naviagteToLanding = () => {
+        navigate('/');
+        window.location.reload();
+    };
 
     return(
         <div className="login_container" >
-            <div className="header">
+            <div className="reg_header">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/LinkedIn_Logo.svg/2560px-LinkedIn_Logo.svg.png" alt="logo"></img>
             </div>
             

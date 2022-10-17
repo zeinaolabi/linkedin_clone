@@ -13,14 +13,6 @@ const userSchema = new mongoose.Schema({
         minLength: 6,
         select: false
     },
-    first_name: {
-        type: String,
-        trim: true
-    },
-    last_name: {
-        type: String,
-        trim: true
-    },
     headline: {
         type: String,
         trim: true
@@ -37,18 +29,36 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    company_name: {
+    name: {
         type: String,
-        trim: true
     },
-    company_about: {
+    bio: {
         type: String,
-        trim: true
+        maxLength: 150
     },
+    about: {
+        type: String
+    },
+    profile_picture: {
+        type: String
+    },
+    cover_picture: {
+        type: String
+    },
+    follows: [{
+        company: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    }],
     user_type_id: {
         type: Number,
         required: "User type is required"
-    }
+    },
+    jobs:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Job'
+    }]
 })
 
 const User = mongoose.model('User', userSchema);

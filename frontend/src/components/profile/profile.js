@@ -1,7 +1,7 @@
 import React from "react";
 import './profile.css';
 
-const Profile = () => {
+const Profile = ({name, headline, country, city, phone_number}) => {
     return(
         <div class="profile_header">
                 <div className="profile">
@@ -11,9 +11,13 @@ const Profile = () => {
                 </div>
 
                 <div className="profile_info">
-                    <span> </span>
+                    <div className="edit_row">
+                        <span>{name}</span>
+                        <button className="blue_btn">Edit Profile</button>
+                    </div>
 
-                    <span className="bio"></span>
+                    <span>{headline}</span>
+                    <span className="bio">{country}, {city} - {phone_number}</span>
                 </div>
         </div>
     )

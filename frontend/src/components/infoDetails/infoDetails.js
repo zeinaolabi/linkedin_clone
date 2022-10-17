@@ -2,23 +2,34 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import './infoDetails.css';
 const applyAPI = "http://127.0.0.1:8000/jobs/apply";
+const hasAppliedAPI = "http://127.0.0.1:8000/jobs/check_if_applied";
 const userID = localStorage.getItem("id");
+let applied;
 
 const InfoDetails = ({id, title, companyName, country, date, profile_picture, dataType}) =>{
     const [input, setInput] = useState({userID: userID, jobID: id});
+    const [applied, setApplied] = useState(false);
+
+    const apply = async (e) => {
+        e.preventDefault();
+        await axios.post(applyAPI, input)
+        .then(response => {
+            setApplied(true);
+        })
+    }
+
+    const hasApplied = async (e) =>{ 
+        await axios.post(hasAppliedAPI, input)
+        .then(response =>{
+            setApplied(response.data);
+        })
+    }
 
     useEffect(()=>{
         setInput({...input, jobID: id})
     },[id])
 
-    const apply = async (e) => {
-        e.preventDefault();
-    
-        await axios.post(applyAPI, input)
-        .then( response => {
-            console.log(response);
-        })
-    }
+    if(dataType === "Jobs") hasApplied();
 
     return (
         <div className="details_container">
@@ -32,7 +43,9 @@ const InfoDetails = ({id, title, companyName, country, date, profile_picture, da
                     <span className="gray_text date">{date}</span>
                 </div>
 
-                { dataType === "Jobs" ? <button onClick={apply} className="blue_btn">Apply</button> : ""}
+                { dataType === "Jobs" ? <button onClick={apply} className="blue_btn">
+                    {applied ? "Applied" : "Apply"}
+                </button> : ""}
             </div>
         </div>
     )

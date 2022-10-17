@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./../../components/header/header";
-import Profile from "../../components/profile/profile";
+import CompanyProfile from "../../components/profile/companyProfile";
 
 const UserProfilePage = () => {
 
@@ -9,7 +9,7 @@ const UserProfilePage = () => {
             <Header />
             <div className="profile_container">
                 <div className="profile_content">
-                    <Profile />
+                    <CompanyProfile />
                 </div>
             </div>
         </div>

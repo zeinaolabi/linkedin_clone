@@ -26,7 +26,7 @@ const CompanyProfilePage = () => {
                     { status === "loading" ? <div className="loading">Loading..</div> : ""}
                     {
                         status === "success" ?
-                        <CompanyProfile name={data.name} headline = {data.headline} country={data.country} city={data.city} phone_number={data.phone_number}/>: ""
+                        <CompanyProfile id={data._id} name={data.name} headline = {data.headline} country={data.country} city={data.city} phone_number={data.phone_number}/>: ""
                     }
                 </div>
             </div>

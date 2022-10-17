@@ -37,12 +37,12 @@ const InfoDetails = ({id, title, company_name, country, date, profile_picture, d
     if(dataType === "Jobs") hasApplied();
 
     return (
-        <div className="details_container" onClick={navigateToCompany}>
+        <div className="details_container">
             <img src= {profile_picture === undefined ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" : profile_picture} alt="profile"></img>
 
-            <div className="details">
+            <div className="details" >
                 <div className="details_content">
-                    <h4>{title}</h4>
+                    <h4 onClick={navigateToCompany}>{title}</h4>
                     <span>{company_name}</span>
                     <span className="gray_text">{country}</span>
                     <span className="gray_text date">{date}</span>

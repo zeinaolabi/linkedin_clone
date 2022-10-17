@@ -34,7 +34,14 @@ const searchForJob = async (request, response) => {
 
     if(jobs.length === 0) return response.status(200).json({message: "No jobs found"})
 
-    return response.status(200).json(jobs);
+    const result = [];
+    await jobs.map(async (job) =>{
+        const companyName = await User.findById(job.company);
+        result.push({job, company_name: await companyName.name})
+        if(result.length === jobs.length){
+            return response.status(200).json(result);
+        }
+    })
 }
 
 const getAllJobs = async (request, response) => {
@@ -45,7 +52,7 @@ const getAllJobs = async (request, response) => {
     const result = [];
     await jobs.map(async (job) =>{
         const companyName = await User.findById(job.company);
-        result.push({job: job, company_name: await companyName.name})
+        result.push({job, company_name: await companyName.name})
         if(result.length === jobs.length){
             return response.status(200).json(result);
         }

@@ -14,8 +14,7 @@ const AddJobModal = (props) => {
     const [error, setError ] = useState("");
 
     const submit = async (e) =>{     
-        await axios.post(addJobAPI, input, config)
-        .then(window.location.reload())
+       await axios.post(addJobAPI, input, config)
         .catch(setError("Invalid Input"));
     }
 

@@ -257,6 +257,21 @@ body{
 
 /*End of landing page*/
 
+.profile_container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.profile_content{
+  width: 50%;
+  background-color: white;
+  border: 1px solid rgb(225, 225, 225);
+  box-shadow: 2px 2px 8px rgb(225, 225, 225);
+  margin-top: 2vh;
+}
+
 @media screen and (max-width: 1150px) {
   .App{
     background-color:white;

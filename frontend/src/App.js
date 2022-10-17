@@ -7,6 +7,7 @@ import RegisterationForm from './views/signInPages/registerationPage';
 import UserJobsPage from './views/userPages/userJobsPage';
 import NotificationsPage from './views/userPages/notificationsPage';
 import SearchResultPage from './views/userPages/searchResultPage';
+import UserProfilePage from './views/userPages/userProfilePage';
 
 const userID = localStorage.getItem("id");
 const userType = localStorage.getItem("type");
@@ -38,6 +39,7 @@ function App() {
           <Route path="/notifications" element={<NotificationsPage />} />
           <Route path="/jobs" element={<UserJobsPage />} />
           <Route path="/search_result" element={<SearchResultPage />} />
+          <Route path="/profile" element={<UserProfilePage />} />
 
         </Routes>
       </Router>

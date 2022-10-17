@@ -45,6 +45,20 @@ const getAllJobs = async (request, response) => {
     return response.status(200).json(jobs);
 }
 
+const appliedToJob = async (request, response) => {
+    const {userID, jobID} = request.body;
+
+    const checkUser = await User.findById(userID);
+    if(!checkUser || checkUser.user_type_id !== user_type) return response.status(404).json({message: "Invalid User"});
+
+    const checkJob = await Job.findById(jobID);
+    if(!checkJob) return response.status(404).json({message: "Invalid Job"});
+
+    const hasApplied = await Job.findOne({_id: jobID, "applied_to._id": userID});
+
+    response.json(!!hasApplied);
+}
+
 const applyToJob = async (request, response) => {
     const {userID, jobID} = request.body;
 
@@ -84,5 +98,6 @@ module.exports = {
     addJob,
     getAllJobs,
     applyToJob,
+    appliedToJob,
     getJobNotification
 }

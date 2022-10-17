@@ -38,11 +38,18 @@ const searchForJob = async (request, response) => {
 }
 
 const getAllJobs = async (request, response) => {
-    const jobs = await Job.find().sort({"createdAt": "desc"});
+    const jobs = await Job.find().sort({"createdAt": "desc"}).limit(10);
 
     if(jobs.length === 0) return response.status(404).json({message: "No jobs found"})
 
-    return response.status(200).json(jobs);
+    const result = [];
+    await jobs.map(async (job) =>{
+        const companyName = await User.findById(job.company);
+        result.push({job: job, company_name: await companyName.name})
+        if(result.length === jobs.length){
+            return response.status(200).json(result);
+        }
+    })
 }
 
 const appliedToJob = async (request, response) => {

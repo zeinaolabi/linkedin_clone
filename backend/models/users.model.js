@@ -62,7 +62,11 @@ const userSchema = new mongoose.Schema({
     user_type_id: {
         type: Number,
         required: "User type is required"
-    }
+    },
+    jobs:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Job'
+    }]
 })
 
 const User = mongoose.model('User', userSchema);

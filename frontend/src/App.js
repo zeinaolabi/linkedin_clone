@@ -9,22 +9,23 @@ import NotificationsPage from './views/userPages/notificationsPage';
 import SearchResultPage from './views/userPages/searchResultPage';
 import UserProfilePage from './views/userPages/userProfilePage';
 import CompanyProfilePage from './views/userPages/companyProfilePage';
+import CompanyPage from './views/companyPages/companyProfile';
 
 const userID = localStorage.getItem("id");
 const userType = localStorage.getItem("type");
 const queryClient = new QueryClient();
 
 function App() {
-  // const isCompany = userID !== "" &&  userType === "1";
+  const isCompany = userID !== "" &&  userType === "1";
   const isUser = userID !== "" &&  userType === "2";
   let openPage;
 
   if(isUser){
     openPage = <UserJobsPage />;
   } 
-  // else if(isUser){
-  //   openPage = <InstructorPage />;
-  // }
+  else if(isCompany){
+    openPage = <CompanyPage />;
+  }
   else{
     openPage = <LoginFrom /> 
   }

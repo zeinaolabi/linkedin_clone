@@ -38,7 +38,7 @@ const InfoDetails = ({id, title, company_name, country, date, profile_picture, d
 
     return (
         <div className="details_container">
-            <img src= {profile_picture === undefined ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" : profile_picture} alt="profile"></img>
+            <img onClick={navigateToCompany} src= {profile_picture === undefined ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" : profile_picture} alt="profile"></img>
 
             <div className="details" >
                 <div className="details_content">

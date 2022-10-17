@@ -24,7 +24,7 @@ const Profile = (props) => {
                 <div className="profile_info">
                     <div className="edit_row">
                         <h3>{data.name}</h3>
-                        <button className="blue_btn">Edit Profile</button>
+                        <button className="blue_btn">{props.functionality === "Post" ? "Post Job" : "Edit Profile"}</button>
                     </div>
 
                     <h4>{data.headline}</h4>

@@ -19,7 +19,6 @@ const Profile = (props) => {
         await axios.post(isFollowedAPI, input)
         .then(response => setFollow(response.data))
     }
-
     isFollowed();
 
     const follow = async () => {

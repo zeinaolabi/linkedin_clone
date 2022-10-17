@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from "react";
+import AddJobModal from "../../components/modals/addJobModal";
 import './profile.css';
 
 const Profile = (props) => {
     const [data, setData] = useState({name: "", headline: "", country: "", city: "", phone_number: ""});
+    const [showModal, setShow] = useState(false); 
 
     useEffect(()=>{
         setData({name: props.name, headline: props.headline, country: props.country, city: props.city, phone_number: props.phone_number})
@@ -24,12 +26,14 @@ const Profile = (props) => {
                 <div className="profile_info">
                     <div className="edit_row">
                         <h3>{data.name}</h3>
-                        <button className="blue_btn">{props.functionality === "Post" ? "Post Job" : "Edit Profile"}</button>
+                        <button onClick={() => {setShow(true);}} className="blue_btn">{props.functionality === "Post" ? "Post Job" : "Edit Profile"}</button>
                     </div>
 
                     <h4>{data.headline}</h4>
                     <span className="bio">{data.country}, {data.city} - {data.phone_number}</span>
                 </div>
+
+            <AddJobModal onClose={()=>setShow(false)} show={showModal}/>
         </div>
     )
 }

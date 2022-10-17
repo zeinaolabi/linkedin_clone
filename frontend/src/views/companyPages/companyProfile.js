@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
+import { useQuery } from 'react-query';
 import Header from "./../../components/header/header";
 import Profile from "../../components/profile/profile";
 import axios from "axios";
-import { useQuery } from 'react-query';
 const url = "http://127.0.0.1:8000/user/get_profile/" + localStorage.getItem("id");
 
 const UserProfilePage = () => {

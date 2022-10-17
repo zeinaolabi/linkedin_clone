@@ -9,7 +9,8 @@ const jobSchema = new mongoose.Schema({
     description: {
         type: String,
         required: 'Description is required',
-        trim: true
+        trim: true,
+        unique: false
     },
     country: {
         type: String,

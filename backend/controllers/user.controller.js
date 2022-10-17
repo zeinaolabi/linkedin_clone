@@ -63,6 +63,18 @@ const getUserProfile = async (request, response) => {
     response.status(200).json(user);
 }
 
+const getJobsPerCompany = async (request, response) => {
+    const {companyID} = request.params;
+
+    const user = await User.findById(companyID);
+    if(!user) return response.status(404).json({message: "Invalid User"});
+
+    const jobs = await Job.find({"company": companyID});
+    if(!jobs) return response.status(404).json({message: "No Jobs"});
+
+    response.status(200).json(jobs);
+}
+
 // const updateUser = async (request, response) => {
 //     const {id, ...data} = request.body
 //     const user = User.findById(id);
@@ -88,6 +100,6 @@ module.exports = {
     followCompany,
     unfollowCompany,
     isFollowedCompany,
-    // updateUser,
+    getJobsPerCompany,
     getUserProfile
 }

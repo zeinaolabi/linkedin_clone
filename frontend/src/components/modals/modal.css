@@ -32,10 +32,10 @@
   
 .modal_footer{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    height: 20%;
+    height: 25%;
 }
   
 .modal_title{
@@ -52,4 +52,9 @@
 
 .modal .blue_btn{
     padding: 1vh 1vw;
+    margin: 0;
+}
+
+.modal .error_message{
+    margin: 0;
 }

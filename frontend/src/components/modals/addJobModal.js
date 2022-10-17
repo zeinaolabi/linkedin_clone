@@ -15,7 +15,7 @@ const AddJobModal = (props) => {
 
     const submit = async (e) =>{     
         await axios.post(addJobAPI, input, config)
-        .then(window.location.reload())
+        .then(props.onClose)
         .catch(setError("Invalid Input"));
     }
 
@@ -31,7 +31,7 @@ const AddJobModal = (props) => {
                     <button onClick={props.onClose} className="blue_btn">Close</button>
                 </div>
                 <div className="modal_body">
-                    <input type="text" className="textfield" placeholder="Title" onChange={(e) =>setInput({...input, email: e.target.value})}></input>
+                    <input type="text" className="textfield" placeholder="Title" onChange={(e) =>setInput({...input, title: e.target.value})}></input>
                     <input type="text" className="textfield" placeholder="Description" onChange={(e) =>setInput({...input, description: e.target.value})}></input>
                     <input type="text" className="textfield" placeholder="Country" onChange={(e) =>setInput({...input, country: e.target.value})}></input>
                 </div>

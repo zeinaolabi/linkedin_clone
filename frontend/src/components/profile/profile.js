@@ -10,7 +10,7 @@ const Profile = (props) => {
         setData({name: props.name, headline: props.headline, country: props.country, city: props.city, phone_number: props.phone_number})
     },[props])
     return(
-        <div class="profile_header">
+        <div className="profile_header">
                 <div className="profile">
                     <label>
                         <img className="cover" src="https://www.avidcareerist.com/wp-content/uploads/2015/09/Dont-Use-This-LinkedIn-Banner-1.png" alt="cover"></img>

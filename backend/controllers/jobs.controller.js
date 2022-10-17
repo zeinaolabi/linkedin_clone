@@ -36,8 +36,8 @@ const searchForJob = async (request, response) => {
 
     const result = [];
     await jobs.map(async (job) =>{
-        const companyName = await User.findById(job.company);
-        result.push({job, company_name: await companyName.name})
+        const company = await User.findById(job.company);
+        result.push({job, company_name: await company.name, company_picture: company.profile_picture})
         if(result.length === jobs.length){
             return response.status(200).json(result);
         }
@@ -51,8 +51,8 @@ const getAllJobs = async (request, response) => {
 
     const result = [];
     await jobs.map(async (job) =>{
-        const companyName = await User.findById(job.company);
-        result.push({job, company_name: await companyName.name})
+        const company = await User.findById(job.company);
+        result.push({job, company_name: await company.name, company_picture: company.profile_picture})
         if(result.length === jobs.length){
             return response.status(200).json(result);
         }

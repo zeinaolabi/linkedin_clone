@@ -50,7 +50,7 @@ const isFollowedCompany = async (request, response) => {
 
     const hasFollowed = await User.findOne({_id: userID, "follows._id": companyID});
 
-    return !!hasFollowed;
+    return response.json(!!hasFollowed);
 }
 
 const getUserProfile = async (request, response) => {

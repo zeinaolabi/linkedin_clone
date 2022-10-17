@@ -1,6 +1,6 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { QueryClient, QueryClientProvider} from 'react-query';
 import LoginFrom from './views/signInPages/loginPage';
 import RegisterationForm from './views/signInPages/registerationPage';
@@ -8,6 +8,7 @@ import UserJobsPage from './views/userPages/userJobsPage';
 import NotificationsPage from './views/userPages/notificationsPage';
 import SearchResultPage from './views/userPages/searchResultPage';
 import UserProfilePage from './views/userPages/userProfilePage';
+import CompanyProfilePage from './views/userPages/companyProfilePage';
 
 const userID = localStorage.getItem("id");
 const userType = localStorage.getItem("type");
@@ -40,6 +41,7 @@ function App() {
           <Route path="/jobs" element={<UserJobsPage />} />
           <Route path="/search_result" element={<SearchResultPage />} />
           <Route path="/profile" element={<UserProfilePage />} />
+          <Route path="/company_profile" element={<CompanyProfilePage />} />
 
         </Routes>
       </Router>

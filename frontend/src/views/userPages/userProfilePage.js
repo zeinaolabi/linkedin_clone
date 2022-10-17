@@ -3,7 +3,6 @@ import Header from "./../../components/header/header";
 import Profile from "../../components/profile/profile";
 
 const UserProfilePage = () => {
-
     return(
         <div className="main_container">
             <Header />

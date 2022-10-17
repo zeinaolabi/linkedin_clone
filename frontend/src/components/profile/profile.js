@@ -1,7 +1,17 @@
 import React from "react";
 import './profile.css';
+import axios from "axios";
+import { useQuery } from 'react-query';
+const url = "http://127.0.0.1:8000/user/get_profile/" + localStorage.getItem("id");
 
 const Profile = ({name, headline, country, city, phone_number}) => {
+    const getData = async () => {
+        const resposne = await axios(url);
+        return resposne.data;
+    }
+
+    const {data, status} = useQuery('jobs', getData);
+
     return(
         <div class="profile_header">
                 <div className="profile">
@@ -18,12 +28,12 @@ const Profile = ({name, headline, country, city, phone_number}) => {
 
                 <div className="profile_info">
                     <div className="edit_row">
-                        <span>{name}</span>
+                        <h3>{data.name}</h3>
                         <button className="blue_btn">Edit Profile</button>
                     </div>
 
-                    <span>{headline}</span>
-                    <span className="bio">{country}, {city} - {phone_number}</span>
+                    <h4>{data.headline}</h4>
+                    <span className="bio">{data.country}, {data.city} - {data.phone_number}</span>
                 </div>
         </div>
     )

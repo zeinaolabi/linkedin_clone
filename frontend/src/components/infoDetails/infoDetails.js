@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import {useNavigate} from 'react-router-dom';
 import axios from "axios";
 import './infoDetails.css';
 const applyAPI = "http://127.0.0.1:8000/jobs/apply";
@@ -6,6 +7,7 @@ const hasAppliedAPI = "http://127.0.0.1:8000/jobs/check_if_applied";
 const userID = localStorage.getItem("id");
 
 const InfoDetails = ({id, title, companyName, country, date, profile_picture, dataType}) =>{
+    const navigate = useNavigate();
     const [input, setInput] = useState({userID: userID, jobID: id});
     const [applied, setApplied] = useState(false);
 
@@ -24,6 +26,10 @@ const InfoDetails = ({id, title, companyName, country, date, profile_picture, da
         })
     }
 
+    const navigateToCompany = () => {
+        navigate('/search_result',{state: {id: id}})
+    }
+
     useEffect(()=>{
         setInput({...input, jobID: id})
     },[id])
@@ -31,7 +37,7 @@ const InfoDetails = ({id, title, companyName, country, date, profile_picture, da
     if(dataType === "Jobs") hasApplied();
 
     return (
-        <div className="details_container">
+        <div className="details_container" onClick={navigateToCompany}>
             <img src= {profile_picture === undefined ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" : profile_picture} alt="profile"></img>
 
             <div className="details">

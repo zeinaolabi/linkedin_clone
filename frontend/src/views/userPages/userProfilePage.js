@@ -11,7 +11,7 @@ const UserProfilePage = () => {
         return resposne.data;
     }
 
-    const {data, status} = useQuery('jobs', getData);
+    const {data, status} = useQuery('users', getData);
 
     return(
         <div className="main_container">

@@ -6,7 +6,7 @@ const applyAPI = "http://127.0.0.1:8000/jobs/apply";
 const hasAppliedAPI = "http://127.0.0.1:8000/jobs/check_if_applied";
 const userID = localStorage.getItem("id");
 
-const InfoDetails = ({id, title, companyName, country, date, profile_picture, dataType}) =>{
+const InfoDetails = ({id, title, company_name, country, date, profile_picture, dataType, company}) =>{
     const navigate = useNavigate();
     const [input, setInput] = useState({userID: userID, jobID: id});
     const [applied, setApplied] = useState(false);
@@ -27,7 +27,7 @@ const InfoDetails = ({id, title, companyName, country, date, profile_picture, da
     }
 
     const navigateToCompany = () => {
-        navigate('/search_result',{state: {id: id}})
+        navigate('/company_profile', {state: {id: company}})
     }
 
     useEffect(()=>{
@@ -43,7 +43,7 @@ const InfoDetails = ({id, title, companyName, country, date, profile_picture, da
             <div className="details">
                 <div className="details_content">
                     <h4>{title}</h4>
-                    <span>{companyName}</span>
+                    <span>{company_name}</span>
                     <span className="gray_text">{country}</span>
                     <span className="gray_text date">{date}</span>
                 </div>

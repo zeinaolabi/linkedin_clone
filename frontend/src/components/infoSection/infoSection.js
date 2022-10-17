@@ -26,7 +26,7 @@ const InfoSection = ({title, description, url, errorMessage, dataType}) =>{
                     status === "success" ?
                     data.map((response)=>{
                         return(
-                            <InfoDetails id={response.job._id} title={response.job.title} companyName = {response.company_name} country={response.job.country} date={response.job.createdAt} dataType={dataType}/>
+                            <InfoDetails id={response.job._id} title={response.job.title} company_name = {response.company_name} country={response.job.country} date={response.job.createdAt} company={response.job.company} dataType={dataType}/>
                         )
                     }) : ""
                 }

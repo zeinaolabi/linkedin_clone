@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import './profile.css';
 
-const Profile = ({name, headline, country, city, phone_number}) => {
+const Profile = (props) => {
+    const [data, setData] = useState({name: "", headline: "", country: "", city: "", phone_number: ""});
+
+    useEffect(()=>{
+        setData({name: props.name, headline: props.headline, country: props.country, city: props.city, phone_number: props.phone_number})
+    },[props])
+
     return(
-        <div class="profile_header">
+        <div className="profile_header">
                 <div className="profile">
                     <label>
                         <img className="cover" src="https://www.avidcareerist.com/wp-content/uploads/2015/09/Dont-Use-This-LinkedIn-Banner-1.png" alt="cover"></img>
@@ -18,12 +24,12 @@ const Profile = ({name, headline, country, city, phone_number}) => {
 
                 <div className="profile_info">
                     <div className="edit_row">
-                        <span>{name}</span>
+                        <span>{data.name}</span>
                         <button className="blue_btn">Follow</button>
                     </div>
 
-                    <span>{headline}</span>
-                    <span className="bio">{country}, {city} - {phone_number}</span>
+                    <span>{data.headline}</span>
+                    <span className="bio">{data.country}, {data.city} - {data.phone_number}</span>
                 </div>
         </div>
     )

@@ -58,3 +58,11 @@
     font-size: 14px;
     margin: 1vh 0;
 }
+
+
+@media screen and (max-width: 1200px) {
+    .edit_row .blue_btn{
+        height: 4vh;
+        width: 20vw;
+    }
+}

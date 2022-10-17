@@ -1,17 +1,12 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import './profile.css';
-import axios from "axios";
-import { useQuery } from 'react-query';
-const url = "http://127.0.0.1:8000/user/get_profile/" + localStorage.getItem("id");
 
-const Profile = ({name, headline, country, city, phone_number}) => {
-    const getData = async () => {
-        const resposne = await axios(url);
-        return resposne.data;
-    }
+const Profile = (props) => {
+    const [data, setData] = useState({name: "", headline: "", country: "", city: "", phone_number: ""});
 
-    const {data, status} = useQuery('jobs', getData);
-
+    useEffect(()=>{
+        setData({name: props.name, headline: props.headline, country: props.country, city: props.city, phone_number: props.phone_number})
+    },[props])
     return(
         <div class="profile_header">
                 <div className="profile">

@@ -13,14 +13,6 @@ const userSchema = new mongoose.Schema({
         minLength: 6,
         select: false
     },
-    first_name: {
-        type: String,
-        trim: true
-    },
-    last_name: {
-        type: String,
-        trim: true
-    },
     headline: {
         type: String,
         trim: true

@@ -53,8 +53,41 @@ const isFollowedCompany = async (request, response) => {
     return !!hasFollowed;
 }
 
+const getUserProfile = async (request, response) => {
+    const {userID} = request.params;
+
+    const user = await User.findById(userID);
+
+    if(!user) return response.status(404).json({message: "Invalid User"});
+
+    response.status(200).json(user);
+}
+
+// const updateUser = async (request, response) => {
+//     const {id, ...data} = request.body
+//     const user = User.findById(id);
+//
+//     user.name = data.name != null ? data.name : user.name;
+//     user.headline = data.headline != null ? data.headline : user.headline;
+//     user.phone_number = data.phone_number != null ? data.phone_number : user.phone_number;
+//     user.country = data.country != null ? data.country : user.country;
+//     user.city = data.city != null ? data.city : user.city;
+//
+//
+//
+//     User.findByIdAndUpdate(id,{
+//         name: data.name,
+//         email: data.email,
+//         gender: data.gender
+//     })
+//         .then((user)=>response.send(user))
+//         .catch((err)=>response.status(400).send(err))
+// }
+
 module.exports = {
     followCompany,
     unfollowCompany,
-    isFollowedCompany
+    isFollowedCompany,
+    // updateUser,
+    getUserProfile
 }

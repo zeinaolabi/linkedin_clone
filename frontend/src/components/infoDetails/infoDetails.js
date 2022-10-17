@@ -4,7 +4,6 @@ import './infoDetails.css';
 const applyAPI = "http://127.0.0.1:8000/jobs/apply";
 const hasAppliedAPI = "http://127.0.0.1:8000/jobs/check_if_applied";
 const userID = localStorage.getItem("id");
-let applied;
 
 const InfoDetails = ({id, title, companyName, country, date, profile_picture, dataType}) =>{
     const [input, setInput] = useState({userID: userID, jobID: id});

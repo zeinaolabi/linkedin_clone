@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
+import './modal.css';
 const userID = localStorage.getItem("id");
 const addJobAPI = "http://127.0.0.1:8000/jobs/add_job";
 const config = {
@@ -26,8 +27,8 @@ const AddJobModal = (props) => {
         <div className="modal" >
             <div className="modal_content">
                 <div className="modal_header">
-                    <h1>{props.title}</h1>
-                    <button onClick={props.onClose} className="blue_button">Close</button>
+                    <h2>Add a new Job</h2>
+                    <button onClick={props.onClose} className="blue_btn">Close</button>
                 </div>
                 <div className="modal_body">
                     <input type="text" className="textfield" placeholder="Title" onChange={(e) =>setInput({...input, email: e.target.value})}></input>

@@ -17,7 +17,7 @@ const Profile = (props) => {
 
     const isFollowed = async () =>{ 
         await axios.post(isFollowedAPI, input)
-        .then(setFollow(resposne.data))
+        .then(response => setFollow(response.data))
     }
 
     isFollowed();
@@ -29,10 +29,7 @@ const Profile = (props) => {
 
     const unfollow = async () => {
         await axios.post(unfollowAPI, input)
-        .then(response => {
-            console.log(response)
-            setFollow(false);
-        })
+        .then(setFollow(false))
     }
 
     return(
